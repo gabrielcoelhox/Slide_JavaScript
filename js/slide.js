@@ -59,4 +59,34 @@ export default class Slide {
         this.addSlideEvents();
         return this;
     }
+
+    // Configurações do Slide - Movimentação
+
+    slidePosition(slide) {
+        const margin = (this.wrapper.offsetWidth - slide.offsetWidth) / 2;
+        return -(slide.offsetLeft - margin);
+    }
+    
+    slidesConfig() { // Posicionar o slide no centro
+        this.slideArray = [...this.slide.children].map((element) => {
+            const position = this.slidePosition(element);
+            return { position, element };
+        });
+    }
+    
+    slidesIndexNav(index) { // Navegação do Slide - Utilizado para saber exatamente em qual imagem o slide está
+        const last = this.slideArray.length - 1;
+        this.index = {
+            prev: index ? index - 1 : undefined,
+            active: index,
+            next: index === last ? undefined : index + 1,
+        }
+    }
+    
+    changeSlide(index) { // Transforma cada imagem em uma array
+        const activeSlide = this.slideArray[index];
+        this.moveSlide(activeSlide.position);
+        this.slidesIndexNav(index);
+        this.dist.finalPosition = activeSlide.position;
+    }
 }
