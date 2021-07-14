@@ -6,6 +6,8 @@ Exercício realizado como aprendizado e exercício do curso de JavaScript Comple
 
 ## Link
 
+https://gabrielcoelhox.github.io/Slide_JavaScript/
+
 ## 📷 Veja 📷
 
 ![GIF](github/animacao.gif)
